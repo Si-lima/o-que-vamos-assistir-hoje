@@ -6,6 +6,7 @@ import com.oqvah.api.service.AppUserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import com.oqvah.api.dto.UserResponse;
 
 @RestController
 @RequestMapping("/api/users")
@@ -23,7 +24,11 @@ public class AppUserController {
     }
 
     @GetMapping
-    public List<AppUser> findAllUsers() {
+    public List<UserResponse> findAllUsers() {
         return service.findAllUsers();
+    }
+    @GetMapping("/{id}")
+    public UserResponse findUserById(@PathVariable Long id) {
+    return service.findUserById(id);
     }
 }
